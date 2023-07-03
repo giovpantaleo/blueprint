@@ -25,10 +25,10 @@ services:
             #USE_ADDITIONAL_OPTIONS: --sa -E --rfsim --log_config.global_log_options level,nocolor,time   #rfsim
             USE_ADDITIONAL_OPTIONS: --sa -E --log_config.global_log_options level,nocolor,time,line_num,function #(B210) #G -E
         volumes:
-            #-  /dev/:/dev/ #G
+            -  /dev/:/dev/ #G
             - shared_lib:/usr/local/lib/flexric/
             - ./conf/flexric.conf:/usr/local/etc/flexric/flexric.conf
-            #-  /dev/bus/usb/:/dev/bus/usb/ #(B210)
+            -  /dev/bus/usb/:/dev/bus/usb/ #(B210)
             - ./conf/gnb.conf:/opt/oai-gnb/etc/mounted.conf # (B210) config file should be present 
         networks:
             public_net:

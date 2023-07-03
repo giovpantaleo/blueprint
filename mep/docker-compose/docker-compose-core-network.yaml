@@ -146,8 +146,8 @@ services:
             - TZ=Europe/Paris
             - SMF_INTERFACE_NAME_FOR_N4=eth0
             - SMF_INTERFACE_NAME_FOR_SBI=eth0
-            - DEFAULT_DNS_IPV4_ADDRESS=138.96.0.210 #172.21.3.100
-            - DEFAULT_DNS_SEC_IPV4_ADDRESS=193.51.196.138 #8.8.8.8
+            - DEFAULT_DNS_IPV4_ADDRESS=172.21.3.100 #138.96.0.210
+            - DEFAULT_DNS_SEC_IPV4_ADDRESS=8.8.8.8 #193.51.196.138
             - AMF_IPV4_ADDRESS=192.168.70.132
             - AMF_FQDN=oai-amf
             - UDM_IPV4_ADDRESS=192.168.70.137
