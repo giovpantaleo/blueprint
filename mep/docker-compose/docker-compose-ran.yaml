@@ -120,19 +120,18 @@ volumes:
     shared_lib:
 
 networks:
-    external:
-        public_net:
-            driver: bridge
-            name: demo-oai-public-net
-            ipam:
-                config:
-                    - subnet: 192.168.70.0/24
-            driver_opts:
-                com.docker.network.bridge.name: "demo-oai"
-        public_net_access:
-            name: oai-public-access
-            ipam:
-                config:
-                    - subnet: 192.168.72.0/24
-            driver_opts:
-                com.docker.network.bridge.name: "cn5g-access"
+    public_net:
+        driver: bridge
+        name: demo-oai-public-net
+        ipam:
+            config:
+                - subnet: 192.168.70.0/24
+        #driver_opts:
+        #    com.docker.network.bridge.name: "demo-oai"
+    public_net_access:
+        name: oai-public-access
+        ipam:
+            config:
+                - subnet: 192.168.72.0/24
+        #driver_opts:
+        #    com.docker.network.bridge.name: "cn5g-access"
