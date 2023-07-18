@@ -24,7 +24,7 @@ services:
             SDR_ADDRS: serial=F5EAE7 #XXXXXXX
             #USE_ADDITIONAL_OPTIONS: --sa -E --rfsim --log_config.global_log_options level,nocolor,time   #rfsim
             USE_ADDITIONAL_OPTIONS: --sa -E --log_config.global_log_options level,nocolor,time,line_num,function #(B210) #G -E
-        entrypoint: /bin/bash -c "ip route delete 192.168.70.0/24"
+        entrypoint: /bin/bash -c "apt update; apt install iproute2; ip route delete 192.168.70.0/24"
         volumes:
             -  /dev/:/dev/ #G
             - shared_lib:/usr/local/lib/flexric/
