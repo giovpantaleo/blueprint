@@ -243,22 +243,23 @@ networks:
         ipam:
             config:
                 - subnet: 192.168.70.0/24
+                  gateway: 192.168.3.1
+
         driver_opts:
             com.docker.network.bridge.name: "demo-oai"
-        gateway: 192.168.3.1
     public_net_access:
         name: oai-public-access
         ipam:
             config:
                 - subnet: 192.168.72.0/24
+                  gateway: 192.168.3.1
         driver_opts:
             com.docker.network.bridge.name: "cn5g-access"
-        gateway: 192.168.3.1
     public_net_core:
         name: oai-public-core
         ipam:
             config:
                 - subnet: 192.168.73.0/24
+                  gateway: 192.168.3.1
         driver_opts:
             com.docker.network.bridge.name: "cn5g-core"
-        gateway: 192.168.3.1
