@@ -30,11 +30,12 @@ services:
        public_net:
           ipv4_address: 192.168.70.169
 networks:
-    public_net:
-        driver: bridge
-        name: demo-oai-public-net
-        ipam:
-            config:
-                - subnet: 192.168.70.0/24
-        driver_opts:
-            com.docker.network.bridge.name: "demo-oai"
+    external:
+      public_net:
+          driver: bridge
+          name: demo-oai-public-net
+          ipam:
+              config:
+                  - subnet: 192.168.70.0/24
+          driver_opts:
+              com.docker.network.bridge.name: "demo-oai"

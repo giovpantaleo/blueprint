@@ -237,25 +237,26 @@ services:
             public_net_core:
                 ipv4_address: 192.168.73.135
 networks:
-    public_net:
-        driver: bridge
-        name: demo-oai-public-net
-        ipam:
-            config:
-                - subnet: 192.168.70.0/24
-        driver_opts:
-            com.docker.network.bridge.name: "demo-oai"
-    public_net_access:
-        name: oai-public-access
-        ipam:
-            config:
-                - subnet: 192.168.72.0/24
-        driver_opts:
-            com.docker.network.bridge.name: "cn5g-access"
-    public_net_core:
-        name: oai-public-core
-        ipam:
-            config:
-                - subnet: 192.168.73.0/24
-        driver_opts:
-            com.docker.network.bridge.name: "cn5g-core"
+    external:
+        public_net:
+            driver: bridge
+            name: demo-oai-public-net
+            ipam:
+                config:
+                    - subnet: 192.168.70.0/24
+            driver_opts:
+                com.docker.network.bridge.name: "demo-oai"
+        public_net_access:
+            name: oai-public-access
+            ipam:
+                config:
+                    - subnet: 192.168.72.0/24
+            driver_opts:
+                com.docker.network.bridge.name: "cn5g-access"
+        public_net_core:
+            name: oai-public-core
+            ipam:
+                config:
+                    - subnet: 192.168.73.0/24
+            driver_opts:
+                com.docker.network.bridge.name: "cn5g-core"
