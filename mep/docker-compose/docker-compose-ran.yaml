@@ -126,7 +126,6 @@ networks:
         ipam:
             config:
                 - subnet: 192.168.70.0/24
-                  gateway: 192.168.3.2
         driver_opts:
             com.docker.network.bridge.name: "demo-oai"
     public_net_access:
@@ -134,6 +133,5 @@ networks:
         ipam:
             config:
                 - subnet: 192.168.72.0/24
-                  gateway: 192.168.3.2
         driver_opts:
             com.docker.network.bridge.name: "cn5g-access"
