@@ -1,0 +1,62 @@
+STEP 1 --> 5G NETWORK
+
+rload -i gnuradio 2
+
+uoff 2; sleep 10; uon 2; ssh root@fit02
+
+inside fit02
+
+apt update
+apt install docker-compose -y
+
+uhd_find_devices
+(just to be sure that the usrp is active)
+
+git clone https://github.com/giovpantaleo/blueprint.git
+
+cd blueprint/mep
+
+docker-compose -f docker-compose/docker-compose-core-network.yaml up -d
+
+docker-compose -f docker-compose/docker-compose-cm.yaml up -d
+
+docker-compose -f docker-compose/docker-compose-ran.yaml up -d oai-gnb oai-flexric rabbitmq
+
+docker-compose -f docker-compose/docker-compose-ran.yaml up -d oai-rnis-xapp
+
+docker-compose -f docker-compose/docker-compose-mep.yaml up -d
+
+nano /etc/hosts
+add this line: 
+192.168.70.2 oai-mep.org  
+
+docker-compose -f docker-compose/docker-compose-rnis.yaml up -d
+
+docker ps -a (to chek if all the containers are up)
+docker logs "name container" --follow  --> to see logs of each container 
+STEP 2 --> UE
+
+rload -i quectel-mbim-single-dnn 7
+
+uoff 7; sleep 10; uon 7; ssh root@fit07
+
+./init.sh
+
+./config-ue
+
+./check-ue
+
+./stop.sh
+
+In fit02:
+gNB down and up
+docker-compose -f docker-compose/docker-compose-ran.yaml down 
+
+docker-compose -f docker-compose/docker-compose-ran.yaml up -d oai-gnb oai-flexric rabbitmq
+docker-compose -f docker-compose/docker-compose-ran.yaml up -d oai-rnis-xapp
+
+In fit07:
+ ./start.sh
+
+
+In this first scenario Core, MEC Platform and RAN are in the same host, next step could be to deploy functions in different hosts and to automate the deployment using nepi-ng.
